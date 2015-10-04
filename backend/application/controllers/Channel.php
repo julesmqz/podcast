@@ -27,7 +27,7 @@ class Channel extends MY_Controller {
 
 	public function index_get(){
 		$channel_id = $this->get('id') ? $this->get('id') : 0;
-		$active = $this->get('id') ? $this->get('active') : 1;
+		$active = $this->get('active') ? $this->get('active') : 1;
 		$channels = $this->channel->get( $channel_id, $active );
 
 		if( $channels != null ){
@@ -37,8 +37,8 @@ class Channel extends MY_Controller {
 		}
 	}
 
-	public function index_put(){
-		$channel = $this->channel->create( $this->put() );
+	public function index_post(){
+		$channel = $this->channel->create( $this->post() );
 		if( $channel != null ){
 			$this->set_response($channel, REST_Controller::HTTP_CREATED);
 		}
@@ -48,8 +48,19 @@ class Channel extends MY_Controller {
 		}
 	}
 
-	public function index_post(){
-		$channel = $this->channel->update( $this->post() );
+	public function index_put(){
+		$channel = $this->channel->update( $this->put() );
+		if( $channel != null ){
+			$this->set_response($channel, REST_Controller::HTTP_OK);
+		}
+		else
+		{
+			$this->set_response(null, REST_Controller::HTTP_NOT_MODIFIED);
+		}
+	}
+
+	public function rss_get(){
+		$channel = $this->channel->getRss( $this->get('id') );
 		if( $channel != null ){
 			$this->set_response($channel, REST_Controller::HTTP_OK);
 		}

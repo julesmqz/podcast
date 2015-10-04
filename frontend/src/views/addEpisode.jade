@@ -1,0 +1,53 @@
+button.btn(ng-click="aepisode.goBack();")
+	.mdi-navigation-chevron-left
+	| &nbsp; Regresar a Lista de Episodios
+.well.bs-component
+	.progress.progress-striped(ng-show="aepisode.audioFile.progress >= 0")
+		.progress-bar.progress-bar-info(style="width: {{aepisode.audioFile.progress}}%")
+	form.form-horizontal
+		fieldset
+			legend Añadir Episodio
+			.form-group
+				label.col-lg-2.control-label File
+				.col-lg-10
+					.form-control-wrapper.fileinput
+						input.form-control.empty(type="text",readonly,placeholder="Browse...",ng-model="aepisode.audioFile.name")
+						input(type="file",ngf-select,ng-model="aepisode.audioFile",name="file")
+			button.btn.btn-primary.pull-right(ng-click="aepisode.upload()") Subir
+	.alert.alert-danger(ng-if="aepisode.uploadError")
+		.pull-left.mdi-alert-error 
+		div {{aepisode.uploadError}}
+	audio(ng-if="aepisode.new.fileName",id="my-audio",ng-src="{{aepisode.new.audioFilePath}}")
+.well.bs-component(ng-if="aepisode.new.fileName")
+	form.form-horizontal
+		fieldset
+			legend Información General
+			.form-group
+				label.col-lg-2 Título
+				.col-lg-10
+					input.form-control(type="text",placeholder="Título",ng-model="aepisode.new.title")
+			.form-group
+				label.col-lg-2 Subtítulo
+				.col-lg-10
+					input.form-control(type="text",placeholder="Subtítulo",ng-model="aepisode.new.subtitle")
+			.form-group
+				label.col-lg-2 Descripción
+				.col-lg-10
+					input.form-control(type="text",placeholder="Descripción",ng-model="aepisode.new.summary")
+			.form-group
+				label.col-lg-2 Autor
+				.col-lg-10
+					input.form-control(type="text",placeholder="Autor",ng-model="aepisode.new.author")
+			.form-group
+				label.col-lg-2 Fecha de publicación
+				.col-lg-10
+					input.form-control(type="text",placeholder="Fecha de publicación",ng-model="aepisode.new.pubDate")
+			.form-group
+				label.col-lg-2 Keywords
+				.col-lg-10
+					input.form-control(type="text",placeholder="Copyright",ng-model="aepisode.new.keywords")
+			button.btn.btn-primary.pull-right(ng-click="aepisode.save()") Guardar
+			button.btn.pull-right(ng-click="aepisode.cancel()") Cancelar
+	.alert.alert-danger(ng-if="channel.errors")
+		.pull-left.mdi-alert-error 
+		div {{channel.errors}}

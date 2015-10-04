@@ -1,0 +1,21 @@
+.flex-row{
+	@include display-flex;
+	@include more-flex( flex-direction, row );
+}
+.flex-wrap{
+	@include more-flex( flex-wrap, wrap );
+}
+.flex{
+	@include more-flex( flex-grow, 1 );
+}
+.flex-center{
+	align-items: center
+}
+
+$flex-sizes: 1;
+@while $flex-sizes < 110{
+	.flex#{$flex-sizes}{
+		width: $flex-sizes * 1%;
+	}
+	$flex-sizes: $flex-sizes + 1;
+}

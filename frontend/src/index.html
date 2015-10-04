@@ -1,0 +1,48 @@
+
+<html lang="es" ng-app="podcastApp">
+  <head>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" type="text/css" href="assets/css/podcast.css"/>
+    <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="bower_components/bootstrap-material-design/dist/css/material.min.css"/>
+  </head>
+  <body ng-controller="MainCtrl as main">
+    <div id="navbar" ng-if="main.user">
+      <div ng-click="main.menuToggled = !main.menuToggled" class="menu mdi-navigation-menu"></div>
+    </div>
+    <div id="wrapper" ng-if="main.user" ng-class="{toggled: main.menuToggled}">
+      <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+          <li class="sidebar-brand"> <a href="#/channels">Podcast Manager</a></li>
+          <li><a href="#/channels">My profile</a></li>
+          <li><a href="#/channels">Stats</a></li>
+          <li><a href="#/login">Logout</a></li>
+        </ul>
+      </div>
+      <div id="page-content-wrapper">
+        <div class="container-fluid">
+          <div ng-view="ng-view" class="content"></div>
+        </div>
+      </div>
+    </div>
+    <div id="only-login" ng-if="!main.user" class="container-fluid">
+      <div ng-view="ng-view" class="content"></div>
+    </div>
+  </body>
+  <script typer="text/javascript" src="bower_components/jquery/dist/jquery.min.js">
+    <script typer="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script typer="text/javascript" src="bower_components/bootstrap-material-design/dist/js/material.min.js"></script>
+    <script typer="text/javascript" src="bower_components/angular/angular.min.js"></script>
+    <script typer="text/javascript" src="bower_components/angular-route/angular-route.min.js"></script>
+    <script typer="text/javascript" src="bower_components/ng-file-upload/ng-file-upload-shim.min.js"></script>
+    <script typer="text/javascript" src="bower_components/ng-file-upload/ng-file-upload.min.js"></script>
+    <script typer="text/javascript" src="config/main.js"></script>
+    <script typer="text/javascript" src="app.js"></script>
+    <script typer="text/javascript" src="factories/UserFactory.js"></script>
+    <script typer="text/javascript" src="factories/ChannelFactory.js"></script>
+    <script typer="text/javascript" src="controllers/main.js"></script>
+    <script typer="text/javascript" src="controllers/login.js"></script>
+    <script typer="text/javascript" src="controllers/channel.js"></script>
+    <script typer="text/javascript" src="controllers/episode.js"></script>
+  </script>
+</html>

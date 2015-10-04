@@ -1,0 +1,146 @@
+// FILE reserved for mixins
+/**
+ * Creates flex attr
+ * @param  string $value Value for the flex attr
+ * @return css        	 Diferent and valid tags for supported browsers
+ */
+@mixin  flex( $value ){
+    @include experimental(flex, $value , -moz, -webkit, -o, -ms, not -khtml, official); 
+}
+
+/**
+ * Creates more flex tags. Since they aren't standard we need to use the experimental mixin to cover all posible browsers.
+ * @param  string $type   flex tag to implement
+ * @param  string $value  value of the tag
+ * @return css            Diferent and valid tags for supported browsers
+ */
+@mixin more-flex(  $type, $value ){
+	@include experimental( $type, $value, -moz, -webkit, -o, -ms, not -khtml, official ); 
+}
+/**
+ * Creates touch-callout tag. Since it isn't standard we need to use the experimental mixin to cover all posible browsers.
+ * @param  string $value Value for tag
+ * @return css      	 Diferent and valid tags for supported browsers
+ */
+@mixin touch-callout( $value ){
+	@include experimental( touch-callout, $value, webkit, -moz, not -o, -ms, not official );
+}
+
+/**
+ * Creates a filter transition
+ * @param  string $value Value for the transition
+ * @return css           Diferent and valid tags for supported browsers
+ */
+@mixin transition-filter( $value ){
+	 -webkit-transition: -webkit-filter $value;
+	 transition: filter $value;
+}
+
+/**
+ * Mixin to create gradients
+ * @param  string $direction    direction of the gradient e. to right
+ * @param  string $first-color  Start color
+ * @param  string $second-color End Color
+ * @return css             		Diferent and valid tags for supported browsers
+ */
+@mixin gradient( $direction, $first-color, $second-color ){
+	@include background-image(linear-gradient($direction, $first-color, $second-color));
+}
+
+/**
+ * Mixin to create keyframes animations
+ * @param  string $name Name of the animation
+ * @return css       	Diferent and valid tags for supported browsers
+ *
+ * @usage
+ * @include keyframes(bgcolor) {
+ *	  0% {
+ *	    background-color: #ffccf2;
+ *	  }
+ *	  50% {
+ *	    background-color: #ccffcc;
+ *	  }
+ *	  100% {
+ *	    background-color: #ccffff;
+ *	  } 
+ *	}
+ */
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content; 
+  }
+  @-moz-keyframes #{$name} {
+    @content;
+  }
+  @-ms-keyframes #{$name} {
+    @content;
+  }
+  @keyframes #{$name} {
+    @content;
+  } 
+}
+
+/**
+ * Add animation tag
+ * @param  string $str Value for animation tag
+ * @return css      	Diferent and valid tags for supported browsers
+ */
+@mixin animation($str) {
+  -webkit-animation: #{$str};
+  -moz-animation: #{$str};
+  -ms-animation: #{$str};
+  -o-animation: #{$str};
+  animation: #{$str};      
+}
+
+/**
+ * Sets a fallback to pixels when rem isn't supported. Transforms your pixels size to rem.
+ * @param  pixels $size Font size in pixels
+ * @return css          Creates font size for pixels and rem
+ * @depends function calculateRem
+ */
+@mixin font-size($size) {
+  font-size: $size;
+  font-size: calculateRem($size);
+}
+
+/**
+ * Creates transition tags
+ * @param  string $args attr to transition, params
+ * @return css          Diferent and valid tags for supported browsers       
+ */
+@mixin transition($args) {
+  -webkit-transition: $args;
+  -moz-transition: $args;
+  -ms-transition: $args;
+  -o-transition: $args;
+  transition: $args;
+}
+
+/**
+ * Next mixings are for media queries (responsive design) 
+ * They do not receive any parameter as the entire content is gonna be passed inside.
+ */
+@mixin mini-media {
+  @media (max-width: #{$small-screen-width - 1 }) {
+    @content;
+  }
+}
+
+@mixin small-media {
+  @media (min-width: #{$small-screen-width}) and (max-width: #{$medium-screen-width - 1}) {
+    @content;
+  }
+}
+
+@mixin medium-media {
+  @media (min-width: #{$medium-screen-width}) and (max-width: #{$big-screen-width - 1}) {
+    @content;
+  }
+}
+
+@mixin big-media {
+  @media (min-width: #{$big-screen-width}) {
+    @content;
+  }
+}

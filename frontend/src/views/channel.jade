@@ -1,0 +1,92 @@
+.page-header
+	h1 Tu Canal
+.page-header
+	h2 Información General
+.well.bs-component
+	form.form-horizontal
+		fieldset
+			legend {{channel.info.title}}
+			.form-group
+				label.col-lg-2 Título
+				.col-lg-10
+					input.form-control(type="text",placeholder="Título",ng-model="channel.info.title")
+			.form-group
+				label.col-lg-2 Subtítulo
+				.col-lg-10
+					input.form-control(type="text",placeholder="Subtítulo",ng-model="channel.info.subtitle")
+			.form-group
+				label.col-lg-2 Descripción
+				.col-lg-10
+					input.form-control(type="text",placeholder="Descripción",ng-model="channel.info.description")
+			.form-group
+				label.col-lg-2 Autor
+				.col-lg-10
+					input.form-control(type="text",placeholder="Autor",ng-model="channel.info.author")
+			.form-group
+				label.col-lg-2 Email del Autor
+				.col-lg-10
+					input.form-control(type="text",placeholder="Email de Autor",ng-model="channel.info.author_email")
+			.form-group
+				label.col-lg-2 Lenguaje
+				.col-lg-10
+					select.form-control(placeholder="Lenguaje",ng-model="channel.info.language")
+						option(value="en/us") en/us
+						option(value="es/mx") es/mx
+			.form-group
+				label.col-lg-2 Copyright
+				.col-lg-10
+					input.form-control(type="text",placeholder="Copyright",ng-model="channel.info.copyright")
+			.form-group
+				label.col-lg-2 Contenido Explícito
+				.col-lg-10
+					select.form-control(placeholder="Contenido Explícito",ng-model="channel.info.explicit")
+						option(value="yes") Si
+						option(value="no") No
+			
+			button.btn.btn-primary.pull-right(ng-click="channel.update()") Guardar
+			button.btn.pull-right(ng-click="channel.restore()") Reestablecer
+	.alert.alert-danger(ng-if="channel.errors")
+		.pull-left.mdi-alert-error 
+		div {{channel.errors}}
+.page-header.flex-row
+	h2.flex80 Episodios
+	.flex20 
+		button.btn.pull-right(ng-click="channel.addEpisode()")
+			.mdi-content-add-box
+			| &nbsp; Añadir Episodio
+.data-panel.panel.panel-info(ng-repeat="episode in channel.episodes")
+	.panel-heading.flex-row
+		.title.flex80 Episode Info
+		.actions.flex20
+			//- i.mdi-action-launch
+			i.mdi-content-create
+			i.mdi-action-delete
+	.panel-body
+		table.table.table-striped.table-hover
+			thead
+				tr
+					th #
+					th Valor
+			tbody
+				tr
+					td Titulo
+					td {{episode.title}}
+				tr
+					td Subtitulo
+					td {{episode.subtitle}}
+				tr
+					td Descripción
+					td {{episode.summary}}
+				tr
+					td Autor
+					td {{episode.author}}
+				tr
+					td Fecha de publicación
+					td {{episode.pubDate | date:'medium'}}
+				tr
+					td Duración
+					td {{episode.duration}}
+				tr
+					td Keywords
+					td {{episode.keywords}}
+		

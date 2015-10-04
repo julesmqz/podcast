@@ -1,0 +1,40 @@
+html(lang="es",ng-app="podcastApp")
+	head
+		meta(charset="UTF-8")
+		link(rel="stylesheet", type="text/css", href="assets/css/podcast.css")
+		link(rel="stylesheet", type="text/css", href="bower_components/bootstrap/dist/css/bootstrap.min.css")
+		link(rel="stylesheet", type="text/css", href="bower_components/bootstrap-material-design/dist/css/material.min.css")
+	body(ng-controller="MainCtrl as main")
+			#navbar(ng-if="main.user")
+				.menu.mdi-navigation-menu(ng-click="main.menuToggled = !main.menuToggled")
+			#wrapper(ng-if="main.user",ng-class="{toggled: main.menuToggled}")
+				#sidebar-wrapper
+					ul.sidebar-nav
+						li.sidebar-brand 
+							a(href="#/channels") Podcast Manager
+						li
+							a(href="#/channels") My profile
+						li
+							a(href="#/channels") Stats
+						li
+							a(href="#/login") Logout
+				#page-content-wrapper
+					.container-fluid
+						.content(ng-view)
+			#only-login.container-fluid(ng-if="!main.user")
+				.content(ng-view)
+		script( typer="text/javascript",src="bower_components/jquery/dist/jquery.min.js" )
+		script( typer="text/javascript",src="bower_components/bootstrap/dist/js/bootstrap.min.js" )
+		script( typer="text/javascript",src="bower_components/bootstrap-material-design/dist/js/material.min.js" )
+		script( typer="text/javascript",src="bower_components/angular/angular.min.js" )
+		script( typer="text/javascript",src="bower_components/angular-route/angular-route.min.js" )
+		script( typer="text/javascript",src="bower_components/ng-file-upload/ng-file-upload-shim.min.js" )
+		script( typer="text/javascript",src="bower_components/ng-file-upload/ng-file-upload.min.js" )
+		script( typer="text/javascript",src="config/main.js" )
+		script( typer="text/javascript",src="app.js" )
+		script( typer="text/javascript",src="factories/UserFactory.js" )
+		script( typer="text/javascript",src="factories/ChannelFactory.js" )
+		script( typer="text/javascript",src="controllers/main.js" )
+		script( typer="text/javascript",src="controllers/login.js" )
+		script( typer="text/javascript",src="controllers/channel.js" )
+		script( typer="text/javascript",src="controllers/episode.js" )

@@ -1,0 +1,29 @@
+
+<div class="login">
+  <div class="login-form well bs-component">
+    <form class="form-horizontal">
+      <fieldset>
+        <legend>Podcast Manager</legend>
+        <div class="form-group">
+          <div class="col-lg-10">
+            <input id="inputUser" type="text" placeholder="User" ng-model="login.user" class="form-control"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-lg-10">
+            <input id="inputPass" type="password" placeholder="Password" ng-model="login.pass" class="form-control"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-lg-10 col-lg-offset-2">
+            <button ng-click="login.send()" class="btn btn-primary pull-right">Login</button>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+    <div ng-if="login.error" class="alert alert-danger">
+      <div class="pull-left mdi-alert-error"> </div>
+      <div>{{login.error}}</div>
+    </div>
+  </div>
+</div>

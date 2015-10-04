@@ -212,7 +212,9 @@ class Format {
             }
 
             // replace anything not alpha numeric
-            $key = preg_replace('/[^a-z_\-0-9]/i', '', $key);
+            // $key = preg_replace('/[^a-z_\-0-9]/i', '', $key);
+            $key = $key;
+            // echo $key;
 
             if ($key === '_attributes' && (is_array($value) || is_object($value)))
             {
@@ -224,13 +226,16 @@ class Format {
 
                 foreach ($attributes as $attribute_name => $attribute_value)
                 {
-                    $structure->addAttribute($attribute_name, $attribute_value);
+                    $namespace = strstr( $key, ':' ,true);
+                    $structure->addAttribute($attribute_name, $attribute_value,$namespace);
                 }
             }
             // if there is another array found recursively call this function
             elseif (is_array($value) || is_object($value))
             {
-                $node = $structure->addChild($key);
+                // echo $key;
+                $namespace = strstr( $key, ':' ) ? true : false;
+                $node = $structure->addChild($key,null,$namespace);
 
                 // recursive call.
                 $this->to_xml($value, $node, $key);
@@ -239,8 +244,8 @@ class Format {
             {
                 // add single node.
                 $value = htmlspecialchars(html_entity_decode($value, ENT_QUOTES, 'UTF-8'), ENT_QUOTES, 'UTF-8');
-
-                $structure->addChild($key, $value);
+                $namespace = strstr( $key, ':' ) ? true : false; 
+                $structure->addChild($key, $value,$namespace);
             }
         }
 

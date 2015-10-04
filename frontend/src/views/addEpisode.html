@@ -1,0 +1,78 @@
+
+<button ng-click="aepisode.goBack();" class="btn">
+  <div class="mdi-navigation-chevron-left"></div>&nbsp; Regresar a Lista de Episodios
+</button>
+<div class="well bs-component">
+  <div ng-show="aepisode.audioFile.progress &gt;= 0" class="progress progress-striped">
+    <div style="width: {{aepisode.audioFile.progress}}%" class="progress-bar progress-bar-info"></div>
+  </div>
+  <form class="form-horizontal">
+    <fieldset>
+      <legend>Añadir Episodio</legend>
+      <div class="form-group">
+        <label class="col-lg-2 control-label">File</label>
+        <div class="col-lg-10">
+          <div class="form-control-wrapper fileinput">
+            <input type="text" readonly="readonly" placeholder="Browse..." ng-model="aepisode.audioFile.name" class="form-control empty"/>
+            <input type="file" ngf-select="ngf-select" ng-model="aepisode.audioFile" name="file"/>
+          </div>
+        </div>
+      </div>
+      <button ng-click="aepisode.upload()" class="btn btn-primary pull-right">Subir</button>
+    </fieldset>
+  </form>
+  <div ng-if="aepisode.uploadError" class="alert alert-danger">
+    <div class="pull-left mdi-alert-error"> </div>
+    <div>{{aepisode.uploadError}}</div>
+  </div>
+  <audio ng-if="aepisode.new.fileName" id="my-audio" ng-src="{{aepisode.new.audioFilePath}}"></audio>
+</div>
+<div ng-if="aepisode.new.fileName" class="well bs-component">
+  <form class="form-horizontal">
+    <fieldset>
+      <legend>Información General</legend>
+      <div class="form-group">
+        <label class="col-lg-2">Título</label>
+        <div class="col-lg-10">
+          <input type="text" placeholder="Título" ng-model="aepisode.new.title" class="form-control"/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-lg-2">Subtítulo</label>
+        <div class="col-lg-10">
+          <input type="text" placeholder="Subtítulo" ng-model="aepisode.new.subtitle" class="form-control"/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-lg-2">Descripción</label>
+        <div class="col-lg-10">
+          <input type="text" placeholder="Descripción" ng-model="aepisode.new.summary" class="form-control"/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-lg-2">Autor</label>
+        <div class="col-lg-10">
+          <input type="text" placeholder="Autor" ng-model="aepisode.new.author" class="form-control"/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-lg-2">Fecha de publicación</label>
+        <div class="col-lg-10">
+          <input type="text" placeholder="Fecha de publicación" ng-model="aepisode.new.pubDate" class="form-control"/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-lg-2">Keywords</label>
+        <div class="col-lg-10">
+          <input type="text" placeholder="Copyright" ng-model="aepisode.new.keywords" class="form-control"/>
+        </div>
+      </div>
+      <button ng-click="aepisode.save()" class="btn btn-primary pull-right">Guardar</button>
+      <button ng-click="aepisode.cancel()" class="btn pull-right">Cancelar</button>
+    </fieldset>
+  </form>
+  <div ng-if="channel.errors" class="alert alert-danger">
+    <div class="pull-left mdi-alert-error"> </div>
+    <div>{{channel.errors}}</div>
+  </div>
+</div>

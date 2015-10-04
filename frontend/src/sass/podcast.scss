@@ -1,0 +1,23 @@
+/*!
+ * Podcast Styles
+ */
+
+// Importing base, compass shit
+@import "base";
+
+// Core variables and mixins
+/* @import "functions";
+@import "variables"; */
+@import "mixins";
+
+// Font
+/* @import "mediadashfont"; */
+
+// Importing general clases
+@import "general";
+
+// General and reusable Components
+@import "components/**/*";
+
+// Importng specific styles for podcast
+@import "modules/**/*";

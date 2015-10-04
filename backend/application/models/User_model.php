@@ -13,7 +13,8 @@ class User_model extends CI_Model{
 		$q = $this->db->get_where( 'login', $where );
 		// var_dump($q);
 		if( $q->num_rows() === 1 ){
-			return $q->result_array()[0];
+			$r = $q->result_array();
+			return $r[0];
 		}else{
 			return null;
 		}

@@ -1,0 +1,55 @@
+
+<div class="page-header">
+  <h1>Tus canales</h1>
+</div>
+<div ng-repeat="channel in lchannel.list" class="data-panel panel panel-info">
+  <div class="panel-heading flex-row">
+    <div class="title flex80">Channel Info</div>
+    <div class="actions flex20"><i ng-click="lchannel.openChannel(channel.id)" class="mdi-content-create"></i><i class="mdi-action-delete"></i>
+    </div>
+  </div>
+  <div class="panel-body">
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Valor</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Titulo</td>
+          <td>{{channel.title}}</td>
+        </tr>
+        <tr>
+          <td>Subtitulo</td>
+          <td>{{channel.subtitle}}</td>
+        </tr>
+        <tr>
+          <td>Descripción</td>
+          <td>{{channel.description}}</td>
+        </tr>
+        <tr>
+          <td>Autor</td>
+          <td>{{channel.author}}</td>
+        </tr>
+        <tr>
+          <td>Email de Autor</td>
+          <td>{{channel.author_email}}</td>
+        </tr>
+        <tr>
+          <td>Lenguaje</td>
+          <td>{{channel.language}}</td>
+        </tr>
+        <tr>
+          <td>Copyright</td>
+          <td>{{channel.copyright}}</td>
+        </tr>
+        <tr>
+          <td>Explicit</td>
+          <td>{{channel.explicit}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+.data-panel.panel.panel-info(ng-repeat="channel in lchannel.list")
+	.panel-heading
+		h3 Channel Info
+	.panel-body
+		table.table.table-striped.table-hover
+			thead
+				tr
+					th #
+					th Valor
+			tbody
+				tr(ng-repeat="(key, val) in channel")
+					td {{key}}
+					td {{val}}

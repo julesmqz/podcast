@@ -1,0 +1,29 @@
+{
+  "name": "podcast",
+  "version": "0.0.1",
+  "homepage": "https://github.com/julesmqz/podcast",
+  "description": "Podcast manager",
+  "main": "",
+  "moduleType": [],
+  "authors": [
+    "Jules Márquez Martínez"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap-material-design": "~0.3.0",
+    "angular-mocks": "~1.4.7",
+    "angular-route": "~1.4.7",
+    "angular": "~1.4.7",
+    "bootstrap": "~3.3.5",
+    "ng-file-upload": "~9.0.4",
+    "jquery": "~2.1.4"
+  }
+}
