@@ -9,58 +9,69 @@
   <form class="form-horizontal">
     <fieldset>
       <legend>{{channel.info.title}}</legend>
-      <div class="form-group">
-        <label class="col-lg-2">Título</label>
-        <div class="col-lg-10">
-          <input type="text" placeholder="Título" ng-model="channel.info.title" class="form-control"/>
+      <div class="flex-row">
+        <div class="flex">
+          <div ngf-select="ngf-select" ng-model="channel.info.image" name="channelImage" style="text-align:center;color:#CCC;cursor:pointer;" class="image-uploader">
+            <div style="font-size:200px;" class="mdi-image-image"></div>
+            <p>Change Image</p>
+            <p>{{channel.info.image}}</p><img ngf-src="channel.info.image"/>
+          </div>
         </div>
-      </div>
-      <div class="form-group">
-        <label class="col-lg-2">Subtítulo</label>
-        <div class="col-lg-10">
-          <input type="text" placeholder="Subtítulo" ng-model="channel.info.subtitle" class="form-control"/>
-        </div>
-      </div>
-      <div class="form-group">
-        <label class="col-lg-2">Descripción</label>
-        <div class="col-lg-10">
-          <input type="text" placeholder="Descripción" ng-model="channel.info.description" class="form-control"/>
-        </div>
-      </div>
-      <div class="form-group">
-        <label class="col-lg-2">Autor</label>
-        <div class="col-lg-10">
-          <input type="text" placeholder="Autor" ng-model="channel.info.author" class="form-control"/>
-        </div>
-      </div>
-      <div class="form-group">
-        <label class="col-lg-2">Email del Autor</label>
-        <div class="col-lg-10">
-          <input type="text" placeholder="Email de Autor" ng-model="channel.info.author_email" class="form-control"/>
-        </div>
-      </div>
-      <div class="form-group">
-        <label class="col-lg-2">Lenguaje</label>
-        <div class="col-lg-10">
-          <select placeholder="Lenguaje" ng-model="channel.info.language" class="form-control">
-            <option value="en/us">en/us</option>
-            <option value="es/mx">es/mx</option>
-          </select>
-        </div>
-      </div>
-      <div class="form-group">
-        <label class="col-lg-2">Copyright</label>
-        <div class="col-lg-10">
-          <input type="text" placeholder="Copyright" ng-model="channel.info.copyright" class="form-control"/>
-        </div>
-      </div>
-      <div class="form-group">
-        <label class="col-lg-2">Contenido Explícito</label>
-        <div class="col-lg-10">
-          <select placeholder="Contenido Explícito" ng-model="channel.info.explicit" class="form-control">
-            <option value="yes">Si</option>
-            <option value="no">No</option>
-          </select>
+        <div class="flex">
+          <div class="form-group">
+            <label class="col-lg-2">Título</label>
+            <div class="col-lg-10">
+              <input type="text" placeholder="Título" ng-model="channel.info.title" class="form-control"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-lg-2">Subtítulo</label>
+            <div class="col-lg-10">
+              <input type="text" placeholder="Subtítulo" ng-model="channel.info.subtitle" class="form-control"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-lg-2">Descripción</label>
+            <div class="col-lg-10">
+              <input type="text" placeholder="Descripción" ng-model="channel.info.description" class="form-control"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-lg-2">Autor</label>
+            <div class="col-lg-10">
+              <input type="text" placeholder="Autor" ng-model="channel.info.author" class="form-control"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-lg-2">Email del Autor</label>
+            <div class="col-lg-10">
+              <input type="text" placeholder="Email de Autor" ng-model="channel.info.author_email" class="form-control"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-lg-2">Lenguaje</label>
+            <div class="col-lg-10">
+              <select placeholder="Lenguaje" ng-model="channel.info.language" class="form-control">
+                <option value="en/us">en/us</option>
+                <option value="es/mx">es/mx</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-lg-2">Copyright</label>
+            <div class="col-lg-10">
+              <input type="text" placeholder="Copyright" ng-model="channel.info.copyright" class="form-control"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-lg-2">Contenido Explícito</label>
+            <div class="col-lg-10">
+              <select placeholder="Contenido Explícito" ng-model="channel.info.explicit" class="form-control">
+                <option value="yes">Si</option>
+                <option value="no">No</option>
+              </select>
+            </div>
+          </div>
         </div>
       </div>
       <button ng-click="channel.update()" class="btn btn-primary pull-right">Guardar</button>

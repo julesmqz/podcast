@@ -6,42 +6,51 @@
 	form.form-horizontal
 		fieldset
 			legend {{channel.info.title}}
-			.form-group
-				label.col-lg-2 Título
-				.col-lg-10
-					input.form-control(type="text",placeholder="Título",ng-model="channel.info.title")
-			.form-group
-				label.col-lg-2 Subtítulo
-				.col-lg-10
-					input.form-control(type="text",placeholder="Subtítulo",ng-model="channel.info.subtitle")
-			.form-group
-				label.col-lg-2 Descripción
-				.col-lg-10
-					input.form-control(type="text",placeholder="Descripción",ng-model="channel.info.description")
-			.form-group
-				label.col-lg-2 Autor
-				.col-lg-10
-					input.form-control(type="text",placeholder="Autor",ng-model="channel.info.author")
-			.form-group
-				label.col-lg-2 Email del Autor
-				.col-lg-10
-					input.form-control(type="text",placeholder="Email de Autor",ng-model="channel.info.author_email")
-			.form-group
-				label.col-lg-2 Lenguaje
-				.col-lg-10
-					select.form-control(placeholder="Lenguaje",ng-model="channel.info.language")
-						option(value="en/us") en/us
-						option(value="es/mx") es/mx
-			.form-group
-				label.col-lg-2 Copyright
-				.col-lg-10
-					input.form-control(type="text",placeholder="Copyright",ng-model="channel.info.copyright")
-			.form-group
-				label.col-lg-2 Contenido Explícito
-				.col-lg-10
-					select.form-control(placeholder="Contenido Explícito",ng-model="channel.info.explicit")
-						option(value="yes") Si
-						option(value="no") No
+			.flex-row
+				.flex
+					.image-uploader(ngf-select,ng-model="channel.info.image",name="channelImage",style="text-align:center;color:#CCC;cursor:pointer;")
+						.mdi-image-image(style="font-size:200px;")
+						//- image
+						p Change Image
+						p {{channel.info.image}}
+						img(ngf-src="channel.info.image")
+				.flex
+					.form-group
+						label.col-lg-2 Título
+						.col-lg-10
+							input.form-control(type="text",placeholder="Título",ng-model="channel.info.title")
+					.form-group
+						label.col-lg-2 Subtítulo
+						.col-lg-10
+							input.form-control(type="text",placeholder="Subtítulo",ng-model="channel.info.subtitle")
+					.form-group
+						label.col-lg-2 Descripción
+						.col-lg-10
+							input.form-control(type="text",placeholder="Descripción",ng-model="channel.info.description")
+					.form-group
+						label.col-lg-2 Autor
+						.col-lg-10
+							input.form-control(type="text",placeholder="Autor",ng-model="channel.info.author")
+					.form-group
+						label.col-lg-2 Email del Autor
+						.col-lg-10
+							input.form-control(type="text",placeholder="Email de Autor",ng-model="channel.info.author_email")
+					.form-group
+						label.col-lg-2 Lenguaje
+						.col-lg-10
+							select.form-control(placeholder="Lenguaje",ng-model="channel.info.language")
+								option(value="en/us") en/us
+								option(value="es/mx") es/mx
+					.form-group
+						label.col-lg-2 Copyright
+						.col-lg-10
+							input.form-control(type="text",placeholder="Copyright",ng-model="channel.info.copyright")
+					.form-group
+						label.col-lg-2 Contenido Explícito
+						.col-lg-10
+							select.form-control(placeholder="Contenido Explícito",ng-model="channel.info.explicit")
+								option(value="yes") Si
+								option(value="no") No
 			
 			button.btn.btn-primary.pull-right(ng-click="channel.update()") Guardar
 			button.btn.pull-right(ng-click="channel.restore()") Reestablecer

@@ -13,7 +13,14 @@ class MY_Controller extends REST_Controller {
 
 	public function checkLogin(){
 		$url = current_url();
-		$check = strstr($url, 'login');
+		$allowedWords = ['login','rss'];
+		$check = null;
+		foreach ($allowedWords as $word ) {
+			if( strstr($url, $word ) != null ) {
+				$check = true;
+			}
+		}
+		
 		
 		if( $check == null ){
 			$user = $this->session->userdata( 'usr' );
