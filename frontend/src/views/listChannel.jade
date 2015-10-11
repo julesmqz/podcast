@@ -1,42 +1,16 @@
-.page-header
-	h1 Tus canales
-//- div(ng-click="lchannel.openAdd()") Añadir canal
-.data-panel.panel.panel-info(ng-repeat="channel in lchannel.list")
-	.panel-heading.flex-row
-		.title.flex80 Channel Info
-		.actions.flex20
-			//- i.mdi-action-launch
-			i.mdi-content-create(ng-click="lchannel.openChannel(channel.id)")
-			i.mdi-action-delete
-
-	.panel-body
-		table.table.table-striped.table-hover
-				tr
-					th #
-					th Valor
-			tbody
-				tr
-					td Titulo
-					td {{channel.title}}
-				tr
-					td Subtitulo
-					td {{channel.subtitle}}
-				tr
-					td Descripción
-					td {{channel.description}}
-				tr
-					td Autor
-					td {{channel.author}}
-				tr
-					td Email de Autor
-					td {{channel.author_email}}
-				tr
-					td Lenguaje
-					td {{channel.language}}
-				tr
-					td Copyright
-					td {{channel.copyright}}
-				tr
-					td Explicit
-					td {{channel.explicit}}
-		
+#list-channels
+	.page-header
+		h1 Tus canales
+	.well.bs-component
+		.list-group
+			.list-group-item(ng-repeat="item in lchannel.list")
+				.row-picture
+					img.circle(ng-src="{{item.imageUrl}}")
+				.row-content
+					.flex-row
+						.flex50
+							h4.list-group-item-heading {{item.title}}
+							p.list-group-item-text {{item.description}}
+						.actions.flex50
+							i.delete.mdi-action-delete.pull-right
+							i.launch.mdi-action-launch.pull-right(ng-click="lchannel.openChannel(item.id)")

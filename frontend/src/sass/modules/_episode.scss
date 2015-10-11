@@ -1,0 +1,17 @@
+#add-episode{
+	.upload-file{
+		text-align: center;
+		.upload-icon{
+			color: #FF3522;
+			font-size: 50px;
+			cursor: pointer;
+		}
+		.upload-icon.go{
+			color: #0F7F33;
+		}
+
+		.upload-icon:hover{
+			color: #FFC550;
+		}
+	}
+}

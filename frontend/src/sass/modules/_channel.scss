@@ -1,0 +1,25 @@
+#channel,#list-channels{
+	.list-group{
+		.list-group-item{
+			border-bottom: 1px solid #ddd;
+			margin-bottom: 15px;
+			.row-content{
+				.actions{
+					font-size: 50px;
+					line-height: 50px;
+					opacity: 0.5;
+					.delete{
+						color: #FF3522;
+						font-size: 50px;
+						cursor: pointer;
+					}
+					.launch{
+						color: #001;
+						font-size: 50px;
+						cursor: pointer;
+					}
+				}
+			}
+		}
+	}
+}

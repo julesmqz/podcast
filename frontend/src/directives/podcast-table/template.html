@@ -1,0 +1,13 @@
+
+<div class="podcast-table well bs-component">
+  <div class="flex-row">
+    <div class="flex50">header</div>
+    <div class="flex50">actions</div>
+  </div>
+  <div class="flex-row">
+    <div ng-repeat="header in columns" class="flex flex{{header.width}}">{{header.title}}</div>
+  </div>
+  <div ng-repeat="row in parsedRows" class="flex-row">
+    <div ng-repeat="value in row" class="flex">{{value.value}}</div>
+  </div>
+</div>

@@ -56,12 +56,12 @@ appCtrls.controller('ChannelCtrl', ['$scope', '$http', '$location', '$routeParam
 
 			// console.log(update);
 
-			if( update.hasOwnProperty('progress') ){
+			if (update.hasOwnProperty('progress')) {
 				update.progress(function(evt) {
 					// Math.min is to fix IE which reports 200% sometimes
 					vm.updateProgress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
 					// console.log('loading bar');
-					if( vm.updateProgress == 100 ){
+					if (vm.updateProgress == 100) {
 						vm.updateProgress = -1;
 					}
 				});
@@ -75,7 +75,7 @@ appCtrls.controller('ChannelCtrl', ['$scope', '$http', '$location', '$routeParam
 
 		}
 
-		this.checkImage = function(){
+		this.checkImage = function() {
 			vm.cover = (typeof vm.info.image == 'string') ? config.backUrl + 'images/' + vm.info.image : null;
 			// console.log(vm.cover);
 		}
@@ -86,15 +86,20 @@ appCtrls.controller('ChannelCtrl', ['$scope', '$http', '$location', '$routeParam
 ]);
 
 
-appCtrls.controller('ListChannelCtrl', ['$scope', "$location", 'userFactory', 'channelFactory',
-	function($scope, $location, User, Channel) {
+appCtrls.controller('ListChannelCtrl', ['$scope', "$location", 'config', 'channelFactory',
+	function($scope, $location, config, Channel) {
 		var vm = this;
-		
+
 		var list = Channel.getList();
 
 		list.then(function(rs) {
-			console.log(rs);
 			vm.list = rs;
+			vm.list.forEach(function( item ){
+				if( item.image != 'null' ){
+					item.imageUrl = config.backUrl + 'images/' + item.image;
+					console.log('item image',item.image,item.imageUrl);
+				}
+			})
 		});
 
 		this.openAdd = function() {

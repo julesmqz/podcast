@@ -1,0 +1,22 @@
+//- .data-panel.panel.panel-info(ng-repeat="channel in lchannel.list")
+//- 	.panel-heading
+//- 		h3 Channel Info
+//- 	.panel-body
+//- 		table.table.table-striped.table-hover
+//- 			thead
+//- 				tr
+//- 					th #
+//- 					th Valor
+//- 			tbody
+//- 				tr(ng-repeat="(key, val) in channel")
+//- 					td {{key}}
+//- 					td {{val}}
+
+.podcast-table.well.bs-component
+	.flex-row
+		.flex50 header
+		.flex50 actions
+	.flex-row
+		.flex(ng-repeat="header in columns",class="flex{{header.width}}") {{header.title}}
+	.flex-row(ng-repeat="row in parsedRows")
+		.flex(ng-repeat="value in row") {{value.value}}

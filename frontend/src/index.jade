@@ -12,11 +12,11 @@ html(lang="es",ng-app="podcastApp")
 				#sidebar-wrapper
 					ul.sidebar-nav
 						li.sidebar-brand 
-							a(href="#/channels") Podcast Manager
+							a(href="#") Podcast Manager
 						li
-							a(href="#/channels") My profile
+							a(href="#/channels") Lista de canales
 						li
-							a(href="#/channels") Stats
+							a(href="#/profile") Perfil
 						li
 							a(href="#/login") Logout
 				#page-content-wrapper
@@ -33,6 +33,7 @@ html(lang="es",ng-app="podcastApp")
 		script( typer="text/javascript",src="bower_components/angular-route/angular-route.min.js" )
 		script( typer="text/javascript",src="bower_components/ng-file-upload/ng-file-upload-shim.min.js" )
 		script( typer="text/javascript",src="bower_components/ng-file-upload/ng-file-upload.min.js" )
+		script( typer="text/javascript",src="bower_components/angular-soundmanager2/dist/angular-soundmanager2.min.js" )
 		script( typer="text/javascript",src="config/main.js" )
 		script( typer="text/javascript",src="app.js" )
 		script( typer="text/javascript",src="factories/UserFactory.js" )
@@ -41,3 +42,4 @@ html(lang="es",ng-app="podcastApp")
 		script( typer="text/javascript",src="controllers/login.js" )
 		script( typer="text/javascript",src="controllers/channel.js" )
 		script( typer="text/javascript",src="controllers/episode.js" )
+		script( typer="text/javascript",src="directives/podcast-table/directive.js" )

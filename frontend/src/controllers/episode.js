@@ -27,6 +27,12 @@ appCtrls.controller('AddEpisodeCtrl', ['$scope', '$http', '$location', '$routePa
 					vm.new.pubDate = file.lastModifiedDate;
 					vm.new.audioFilePath = config.backUrl + 'audios/' + vm.new.fileName;
 
+					vm.song = {
+						id: 1,
+						title: vm.new.title,
+						artist: vm.new.author,
+						url: config.backUrl + 'audios/' + res.data.data.file_name
+					};
 					vm.audioFile = null;
 
 					/*setTimeout(function() {
@@ -44,7 +50,7 @@ appCtrls.controller('AddEpisodeCtrl', ['$scope', '$http', '$location', '$routePa
 					// Math.min is to fix IE which reports 200% sometimes
 					file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
 				});
-			}else{
+			} else {
 				this.uploadError = "No file selected.";
 			}
 
@@ -78,6 +84,18 @@ appCtrls.controller('AddEpisodeCtrl', ['$scope', '$http', '$location', '$routePa
 				// not logged, nothing to do
 				//$location.path('/login');
 			});
+		};
+
+		this.cancel = function() {
+			vm.song = null;
+			vm.new = {};
+		}
+
+		this.songTest = {
+			id: 2,
+			title: 'Title',
+			artist: 'Me',
+			url: config.backUrl + 'audios/audio20151004045125.mp3'
 		};
 
 

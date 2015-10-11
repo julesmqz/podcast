@@ -13,9 +13,9 @@
     <div id="wrapper" ng-if="main.user" ng-class="{toggled: main.menuToggled}">
       <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
-          <li class="sidebar-brand"> <a href="#/channels">Podcast Manager</a></li>
-          <li><a href="#/channels">My profile</a></li>
-          <li><a href="#/channels">Stats</a></li>
+          <li class="sidebar-brand"> <a href="#">Podcast Manager</a></li>
+          <li><a href="#/channels">Lista de canales</a></li>
+          <li><a href="#/profile">Perfil</a></li>
           <li><a href="#/login">Logout</a></li>
         </ul>
       </div>
@@ -36,6 +36,7 @@
     <script typer="text/javascript" src="bower_components/angular-route/angular-route.min.js"></script>
     <script typer="text/javascript" src="bower_components/ng-file-upload/ng-file-upload-shim.min.js"></script>
     <script typer="text/javascript" src="bower_components/ng-file-upload/ng-file-upload.min.js"></script>
+    <script typer="text/javascript" src="bower_components/angular-soundmanager2/dist/angular-soundmanager2.min.js"></script>
     <script typer="text/javascript" src="config/main.js"></script>
     <script typer="text/javascript" src="app.js"></script>
     <script typer="text/javascript" src="factories/UserFactory.js"></script>
@@ -44,5 +45,6 @@
     <script typer="text/javascript" src="controllers/login.js"></script>
     <script typer="text/javascript" src="controllers/channel.js"></script>
     <script typer="text/javascript" src="controllers/episode.js"></script>
+    <script typer="text/javascript" src="directives/podcast-table/directive.js"></script>
   </script>
 </html>
