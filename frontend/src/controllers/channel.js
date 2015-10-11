@@ -2,16 +2,32 @@ appCtrls.controller('ChannelCtrl', ['$scope', '$http', '$location', '$routeParam
 	function($scope, $http, $location, $routeParams, config, Channel) {
 		var vm = this;
 
-		var channel = Channel.get( $routeParams.channelId );
-		channel.then(function(rs){
+		this.config = config;
+
+		function setChannel(rs) {
+			if (rs.image == 'null') {
+				rs.image = null;
+			}
 			vm.info = rs;
+			vm._info = JSON.parse(JSON.stringify(vm.info));;
+			if (!vm._info.hasOwnProperty('image')) {
+				vm._info.image = null;
+			}
+
+			vm.cover = (typeof rs.image == 'string') ? config.backUrl + 'images/' + rs.image : null;
+			// console.log(vm.cover);
+		}
+
+		var channel = Channel.get($routeParams.channelId);
+		channel.then(function(rs) {
+			setChannel(rs);
 		});
 
 		$http.get(config.backUrl + 'episode?channel_id=' + $routeParams.channelId).then(function(res) {
 			// console.log('res.data', res.data);
 			if (res.data.hasOwnProperty('length')) {
 				vm.episodes = res.data;
-				console.log('episodes', vm.episodes);
+				// console.log('episodes', vm.episodes);
 			} else {
 				vm.episodes = [res.data];
 			}
@@ -24,6 +40,48 @@ appCtrls.controller('ChannelCtrl', ['$scope', '$http', '$location', '$routeParam
 			$location.path('/channel/' + $routeParams.channelId + '/episode/add');
 		}
 
+		this.reset = function() {
+
+			vm.info = JSON.parse(JSON.stringify(vm._info));
+			vm.cover = (typeof vm.info.image == 'string') ? config.backUrl + 'images/' + vm.info.image : null;
+
+			// console.log(vm.info, vm._info);
+		}
+
+		this.update = function() {
+			// vm.info.id = $routeParams.channelId;
+			// console.log( typeof vm.info.image );
+			vm.updating = true;
+			var update = Channel.save(vm.info);
+
+			// console.log(update);
+
+			if( update.hasOwnProperty('progress') ){
+				update.progress(function(evt) {
+					// Math.min is to fix IE which reports 200% sometimes
+					vm.updateProgress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
+					// console.log('loading bar');
+					if( vm.updateProgress == 100 ){
+						vm.updateProgress = -1;
+					}
+				});
+			}
+
+			update.then(function(rs) {
+				setChannel(rs.data);
+				vm.updating = false;
+			});
+
+
+		}
+
+		this.checkImage = function(){
+			vm.cover = (typeof vm.info.image == 'string') ? config.backUrl + 'images/' + vm.info.image : null;
+			// console.log(vm.cover);
+		}
+
+
+
 	}
 ]);
 
@@ -31,19 +89,11 @@ appCtrls.controller('ChannelCtrl', ['$scope', '$http', '$location', '$routeParam
 appCtrls.controller('ListChannelCtrl', ['$scope', "$location", 'userFactory', 'channelFactory',
 	function($scope, $location, User, Channel) {
 		var vm = this;
-		User.check();
-
-		/*var user = User.get();
-
-		user.then(function( rs ){
-			console.log( rs );
-		});*/
-
-
-
+		
 		var list = Channel.getList();
 
 		list.then(function(rs) {
+			console.log(rs);
 			vm.list = rs;
 		});
 
@@ -51,8 +101,8 @@ appCtrls.controller('ListChannelCtrl', ['$scope', "$location", 'userFactory', 'c
 			$location.path('/channel/add');
 		}
 
-		this.openChannel = function( id ) {
-			$location.path('/channel/'+id);
+		this.openChannel = function(id) {
+			$location.path('/channel/' + id);
 		}
 	}
 ]);

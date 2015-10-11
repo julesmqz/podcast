@@ -5,15 +5,15 @@
 .well.bs-component
 	form.form-horizontal
 		fieldset
-			legend {{channel.info.title}}
+			legend {{channel._info.title}}
 			.flex-row
-				.flex
-					.image-uploader(ngf-select,ng-model="channel.info.image",name="channelImage",style="text-align:center;color:#CCC;cursor:pointer;")
-						.mdi-image-image(style="font-size:200px;")
+				.flex50
+					.image-uploader(ngf-select,ngf-resize="{width: 150, height: 150}",ngf-change="channel.checkImage()",ng-model="channel.info.image",name="channelImage",style="text-align:center;color:#CCC;cursor:pointer;")
+						.mdi-image-image(style="font-size:200px;",ng-if="!channel.info.image && !channel.cover")
+						img(ngf-src="channel.info.image",ng-if="channel.info.image && !channel.cover")
+						img(ng-src="{{channel.cover}}",ng-if="channel.cover")
 						//- image
 						p Change Image
-						p {{channel.info.image}}
-						img(ngf-src="channel.info.image")
 				.flex
 					.form-group
 						label.col-lg-2 Título
@@ -52,8 +52,13 @@
 								option(value="yes") Si
 								option(value="no") No
 			
-			button.btn.btn-primary.pull-right(ng-click="channel.update()") Guardar
-			button.btn.pull-right(ng-click="channel.restore()") Reestablecer
+			button.btn.btn-primary.pull-right(ng-click="channel.update()",ng-if="!channel.updating") Guardar
+			button.btn.btn-primary.pull-right(ng-if="channel.updating") Guardando
+			button.btn.pull-right(ng-click="channel.reset()") Reestablecer
+			.clearfix
+			//- p {{channel.updateProgress}}
+			.progress.progress-striped(ng-show="channel.updateProgress >= 0")
+				.progress-bar.progress-bar-info(style="width: {{channel.updateProgress}}%")
 	.alert.alert-danger(ng-if="channel.errors")
 		.pull-left.mdi-alert-error 
 		div {{channel.errors}}

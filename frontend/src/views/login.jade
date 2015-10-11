@@ -4,11 +4,13 @@
 			fieldset
 				legend Podcast Manager
 				.form-group
-					.col-lg-10
+					.col-lg-12
 						input#inputUser.form-control(type="text",placeholder="User",ng-model="login.user")
+				br
 				.form-group
-					.col-lg-10
+					.col-lg-12
 						input#inputPass.form-control(type="password",placeholder="Password",ng-model="login.pass")
+				br
 				.form-group
 					.col-lg-10.col-lg-offset-2
 						button.btn.btn-primary.pull-right(ng-click="login.send()") Login
