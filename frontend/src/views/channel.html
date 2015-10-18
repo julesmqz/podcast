@@ -96,21 +96,5 @@
       </button>
     </div>
   </div>
-  <div class="well bs-component">
-    <div class="list-group">
-      <div ng-repeat="episode in channel.episodes" class="list-group-item">
-        <div class="row-action-primary"><i class="mdi-image-audiotrack"></i></div>
-        <div ng-if="episode.imageUrl" class="row-picture"><img ng-src="{{episode.imageUrl}}" class="circle"/></div>
-        <div class="row-content">
-          <div class="flex-row">
-            <div class="flex50">
-              <h4 class="list-group-item-heading">{{episode.title}}</h4>
-              <p class="list-group-item-text">{{episode.summary}} | {{episode.duration | secondsToDateTime | date:'HH:mm:ss'}}</p>
-            </div>
-            <div class="actions flex50"><i class="delete mdi-action-delete pull-right"></i><i ng-click="channel.openEpisode(episode.id)" class="launch mdi-action-launch pull-right"></i></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  <table-player songs="channel.episodes" open="channel.openEpisode(id)"></table-player>
 </div>

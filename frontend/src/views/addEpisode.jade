@@ -1,5 +1,5 @@
 #add-episode
-	button.btn(ng-click="aepisode.goBack();")
+	button.btn(ng-click="aepisode.goBack();",clear-playlist)
 		.mdi-navigation-chevron-left
 		| &nbsp; Regresar a Lista de Episodios
 	.well.bs-component(ng-if="!aepisode.new.fileName")
@@ -27,22 +27,23 @@
 				legend Información General
 				.audio-preview.audio-player.small
 					h4 Audio Preview
-					sound-manager
-					.flex-row
-						.actions.flex50
-							button.btn.btn-fab.btn-raised(music-player="play",add-song="aepisode.song",ng-if="!currentPlaying")
-								i.mdi-av-album
-							button.btn.btn-fab.btn-raised(play-music,ng-if="currentPlaying && !isPlaying")
-								i.mdi-av-play-arrow
-							button.btn.btn-fab.btn-raised(pause-music,ng-if="isPlaying")
-								i.mdi-av-pause
-							button.btn.btn-fab.btn-raised(stop-music,ng-if="isPlaying")
-								i.mdi-av-stop
-						.information.flex50
-							p {{ currentPlaying.title }} by {{ currentPlaying.artist }} 
-							p ({{ currentPostion }} / {{ currentDuration }})
-							.bar.progress.progress-striped.seekBase(seek-track,ng-class="{active:isPlaying}")
-								.progress-bar.seekLoad(ng-style="{width: ( progress + '%' ) }")
+					audio-player(song="aepisode.song")
+					//- sound-manager
+					//- .flex-row
+					//- 	.actions.flex50
+					//- 		button.btn.btn-fab.btn-raised(music-player="play",add-song="aepisode.song",ng-if="!currentPlaying")
+					//- 			i.mdi-av-album
+					//- 		button.btn.btn-fab.btn-raised(play-music,ng-if="currentPlaying && !isPlaying")
+					//- 			i.mdi-av-play-arrow
+					//- 		button.btn.btn-fab.btn-raised(pause-music,ng-if="isPlaying")
+					//- 			i.mdi-av-pause
+					//- 		button.btn.btn-fab.btn-raised(stop-music,ng-if="isPlaying")
+					//- 			i.mdi-av-stop
+					//- 	.information.flex50
+					//- 		p {{ currentPlaying.title }} by {{ currentPlaying.artist }} 
+					//- 		p ({{ currentPostion }} / {{ currentDuration }})
+					//- 		.bar.progress.progress-striped.seekBase(seek-track,ng-class="{active:isPlaying}")
+					//- 			.progress-bar.seekLoad(ng-style="{width: ( progress + '%' ) }")
 				.information
 					.form-group
 						label.col-lg-2 Título

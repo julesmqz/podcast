@@ -1,0 +1,16 @@
+sound-manager
+.flex-row
+	.actions.flex50
+		button.btn.btn-fab.btn-raised(music-player="play",add-song="song",ng-if="!currentPlaying")
+			i.mdi-image-audiotrack
+		button.btn.btn-fab.btn-raised(play-music,ng-if="currentPlaying && !isPlaying")
+			i.mdi-av-play-arrow
+		button.btn.btn-fab.btn-raised(pause-music,ng-if="isPlaying")
+			i.mdi-av-pause
+		button.btn.btn-fab.btn-raised(stop-music,ng-if="isPlaying")
+			i.mdi-av-stop
+	.information.flex50
+		p {{ currentPlaying.title }} by {{ currentPlaying.artist }} 
+		p ({{ currentPostion }} / {{ currentDuration }})
+		.bar.progress.progress-striped.seekBase(seek-track,ng-class="{active:isPlaying}")
+			.progress-bar.seekLoad(ng-style="{width: ( progress + '%' ) }")

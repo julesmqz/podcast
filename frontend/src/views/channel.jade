@@ -69,21 +69,22 @@
 			button.btn.pull-right(ng-click="channel.addEpisode()")
 				.mdi-content-add-box
 				| &nbsp; Añadir Episodio
-	.well.bs-component
-		.list-group
-			.list-group-item(ng-repeat="episode in channel.episodes")
-				.row-action-primary
-					i.mdi-image-audiotrack
-				.row-picture(ng-if="episode.imageUrl")
-					img.circle(ng-src="{{episode.imageUrl}}")
-				.row-content
-					.flex-row
-						.flex50
-							h4.list-group-item-heading {{episode.title}}
-							p.list-group-item-text {{episode.summary}} | {{episode.duration | secondsToDateTime | date:'HH:mm:ss'}}
-						.actions.flex50
-							i.delete.mdi-action-delete.pull-right
-							i.launch.mdi-action-launch.pull-right(ng-click="channel.openEpisode(episode.id)")
+	table-player(songs="channel.episodes",open="channel.openEpisode(id)")
+	//- .well.bs-component
+	//- 	.list-group
+	//- 		.list-group-item(ng-repeat="episode in channel.episodes")
+	//- 			.row-action-primary
+	//- 				i.mdi-image-audiotrack
+	//- 			.row-picture(ng-if="episode.imageUrl")
+	//- 				img.circle(ng-src="{{episode.imageUrl}}")
+	//- 			.row-content
+	//- 				.flex-row
+	//- 					.flex50
+	//- 						h4.list-group-item-heading {{episode.title}}
+	//- 						p.list-group-item-text {{episode.summary}} | {{episode.duration | secondsToDateTime | date:'HH:mm:ss'}}
+	//- 					.actions.flex50
+	//- 						i.delete.mdi-action-delete.pull-right
+	//- 						i.launch.mdi-action-launch.pull-right(ng-click="channel.openEpisode(episode.id)")
 	//- .data-panel.panel.panel-info(ng-repeat="episode in channel.episodes")
 	//- 	.panel-heading.flex-row
 	//- 		.title.flex80 Episode Info

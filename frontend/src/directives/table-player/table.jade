@@ -1,0 +1,20 @@
+sound-manager
+.well.bs-component
+	.list-group
+		.list-group-item(ng-repeat="song in songs")
+			.bar.progress.progress-striped.seekBase(seek-track,ng-class="{active:isPlaying}",ng-if="song.playing",style="position:absolute;height:85%;width:100%;opacity:0.5;")
+				.progress-bar.seekLoad(ng-style="{width: ( progress + '%' ) }")
+			.row-action-primary(ng-click="togglePlaying(song,true)",ng-if="!song.playing")
+				i.mdi-image-audiotrack(music-player="play",add-song="song")
+			.row-picture(ng-if="song.imageUrl && !song.playing")
+				img.circle(ng-src="{{song.imageUrl}}",music-player="play",add-song="song")
+			.row-action-primary(ng-if="song.playing")
+				i.mdi-av-stop(clear-playlist,ng-click="togglePlaying(song,false)")
+			.row-content
+				.flex-row
+					.flex50
+						h4.list-group-item-heading {{song.title}}
+						p.list-group-item-text {{song.summary}} | {{song.duration | secondsToDateTime | date:'HH:mm:ss'}}
+					.actions.flex50
+						i.delete.mdi-action-delete.pull-right
+						i.launch.mdi-action-launch.pull-right(ng-click="open({id:song})")

@@ -27,10 +27,16 @@ appCtrls.controller('ChannelCtrl', ['$scope', '$http', '$location', '$routeParam
 			// console.log('res.data', res.data);
 			if (res.data.hasOwnProperty('length')) {
 				vm.episodes = res.data;
-				// console.log('episodes', vm.episodes);
 			} else {
 				vm.episodes = [res.data];
 			}
+
+			// console.log( vm.episodes );
+
+			vm.episodes.forEach(function(episode) {
+				episode.artist = episode.author;
+				episode.url = config.backUrl + 'audios/' + episode.fileName;
+			});
 
 		}, function(res) {
 			vm.episodes = null;
@@ -80,7 +86,9 @@ appCtrls.controller('ChannelCtrl', ['$scope', '$http', '$location', '$routeParam
 			// console.log(vm.cover);
 		}
 
-
+		this.openEpisode = function(episodeId) {
+			console.log('episode', episodeId);
+		}
 
 	}
 ]);
@@ -94,10 +102,10 @@ appCtrls.controller('ListChannelCtrl', ['$scope', "$location", 'config', 'channe
 
 		list.then(function(rs) {
 			vm.list = rs;
-			vm.list.forEach(function( item ){
-				if( item.image != 'null' ){
+			vm.list.forEach(function(item) {
+				if (item.image != 'null') {
 					item.imageUrl = config.backUrl + 'images/' + item.image;
-					console.log('item image',item.image,item.imageUrl);
+					console.log('item image', item.image, item.imageUrl);
 				}
 			})
 		});

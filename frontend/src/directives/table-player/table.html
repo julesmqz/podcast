@@ -1,0 +1,23 @@
+
+<sound-manager></sound-manager>
+<div class="well bs-component">
+  <div class="list-group">
+    <div ng-repeat="song in songs" class="list-group-item">
+      <div seek-track="seek-track" ng-class="{active:isPlaying}" ng-if="song.playing" style="position:absolute;height:85%;width:100%;opacity:0.5;" class="bar progress progress-striped seekBase">
+        <div ng-style="{width: ( progress + '%' ) }" class="progress-bar seekLoad"></div>
+      </div>
+      <div ng-click="togglePlaying(song,true)" ng-if="!song.playing" class="row-action-primary"><i music-player="play" add-song="song" class="mdi-image-audiotrack"></i></div>
+      <div ng-if="song.imageUrl &amp;&amp; !song.playing" class="row-picture"><img ng-src="{{song.imageUrl}}" music-player="play" add-song="song" class="circle"/></div>
+      <div ng-if="song.playing" class="row-action-primary"><i clear-playlist="clear-playlist" ng-click="togglePlaying(song,false)" class="mdi-av-stop"></i></div>
+      <div class="row-content">
+        <div class="flex-row">
+          <div class="flex50">
+            <h4 class="list-group-item-heading">{{song.title}}</h4>
+            <p class="list-group-item-text">{{song.summary}} | {{song.duration | secondsToDateTime | date:'HH:mm:ss'}}</p>
+          </div>
+          <div class="actions flex50"><i class="delete mdi-action-delete pull-right"></i><i ng-click="open({id:song})" class="launch mdi-action-launch pull-right"></i></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

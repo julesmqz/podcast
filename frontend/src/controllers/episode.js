@@ -11,7 +11,6 @@ appCtrls.controller('AddEpisodeCtrl', ['$scope', '$http', '$location', '$routePa
 			this.uploadError = null;
 			if (this.audioFile) {
 				var file = this.audioFile;
-				// console.log(file);
 				file.upload = Upload.upload({
 					url: config.backUrl + 'episode/audio',
 					data: {
@@ -33,7 +32,14 @@ appCtrls.controller('AddEpisodeCtrl', ['$scope', '$http', '$location', '$routePa
 						artist: vm.new.author,
 						url: config.backUrl + 'audios/' + res.data.data.file_name
 					};
-					vm.audioFile = null;
+
+					Upload.mediaDuration(file).then(function(durationInSeconds){
+						vm.audio = {
+							duration: durationInSeconds
+						};
+						vm.audioFile = null;
+					});
+					
 
 					/*setTimeout(function() {
 						var audio = document.getElementById('my-audio');
@@ -57,7 +63,7 @@ appCtrls.controller('AddEpisodeCtrl', ['$scope', '$http', '$location', '$routePa
 		};
 
 		this.save = function() {
-			var audio = document.getElementById('my-audio');
+			// var audio = document.getElementById('my-audio');
 			// console.log(audio.duration);
 			var post = {
 				title: vm.new.title,
@@ -65,14 +71,14 @@ appCtrls.controller('AddEpisodeCtrl', ['$scope', '$http', '$location', '$routePa
 				subtitle: vm.new.subtitle,
 				summary: vm.new.summary,
 				pubDate: vm.new.pubDate,
-				duration: audio.duration,
+				duration: vm.audio.duration,
 				keywords: vm.new.keywords,
 				fileName: vm.new.fileName,
 				fileType: vm.new.fileType,
 				channel_id: $routeParams.channelId
 			};
 
-			console.log(post);
+			// console.log(post);
 
 			$http.post(config.backUrl + 'episode', post).then(function(data, status) {
 				// console.log(data,status);

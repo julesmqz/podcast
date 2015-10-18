@@ -90,4 +90,24 @@ class Channel_model extends CI_Model{
 		}
 		return $rss;
 	}
+
+	public function uploadImage( $name ){
+		$config['upload_path']          = './images/';
+		$config['allowed_types']        = '*';
+		$config['file_name']			= 'image'.date('YmdHis');
+		// $config['max_size']             = 8000;
+
+		$this->load->library('upload', $config);
+
+		if ( ! $this->upload->do_upload( $name ) )
+		{
+			return array('error' => $this->upload->display_errors(), 'data' => null );
+			// $this->load->view('upload_form', $error);
+		}
+		else
+		{	
+			// return array('error' => null, 'data' => 'cool');
+			return array('error' => null, 'data' => $this->upload->data() );
+		}
+	}
 }

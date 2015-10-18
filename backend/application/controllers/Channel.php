@@ -66,7 +66,28 @@ class Channel extends MY_Controller {
 		}
 		else
 		{
-			$this->set_response(null, REST_Controller::HTTP_NOT_MODIFIED);
+			$this->set_response(null, REST_Controller::HTTP_BAD_REQUEST);
+		}
+	}
+
+	public function image_post(){
+		$img = $this->channel->uploadImage('image');
+		if( $img['error'] === null ){
+			$post = $this->post();
+			$post['image'] = $img['data']['file_name'];
+			// $this->set_response($post, REST_Controller::HTTP_OK);
+			// ( var_dump($post) );
+			$channel = $this->channel->update( $post );
+			if( $channel != null ){
+				$this->set_response($channel, REST_Controller::HTTP_OK);
+			}
+			else
+			{
+				$this->set_response(null, REST_Controller::HTTP_NOT_MODIFIED);
+			}
+		}
+		else{
+			$this->set_response($img, REST_Controller::HTTP_BAD_REQUEST);
 		}
 	}
 }

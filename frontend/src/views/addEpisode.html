@@ -1,6 +1,6 @@
 
 <div id="add-episode">
-  <button ng-click="aepisode.goBack();" class="btn">
+  <button ng-click="aepisode.goBack();" clear-playlist="clear-playlist" class="btn">
     <div class="mdi-navigation-chevron-left"></div>&nbsp; Regresar a Lista de Episodios
   </button>
   <div ng-if="!aepisode.new.fileName" class="well bs-component">
@@ -33,22 +33,7 @@
         <legend>Información General</legend>
         <div class="audio-preview audio-player small">
           <h4>Audio Preview</h4>
-          <sound-manager></sound-manager>
-          <div class="flex-row">
-            <div class="actions flex50">
-              <button music-player="play" add-song="aepisode.song" ng-if="!currentPlaying" class="btn btn-fab btn-raised"><i class="mdi-av-album"></i></button>
-              <button play-music="play-music" ng-if="currentPlaying &amp;&amp; !isPlaying" class="btn btn-fab btn-raised"><i class="mdi-av-play-arrow"></i></button>
-              <button pause-music="pause-music" ng-if="isPlaying" class="btn btn-fab btn-raised"><i class="mdi-av-pause"></i></button>
-              <button stop-music="stop-music" ng-if="isPlaying" class="btn btn-fab btn-raised"><i class="mdi-av-stop"></i></button>
-            </div>
-            <div class="information flex50">
-              <p>{{ currentPlaying.title }} by {{ currentPlaying.artist }} </p>
-              <p>({{ currentPostion }} / {{ currentDuration }})</p>
-              <div seek-track="seek-track" ng-class="{active:isPlaying}" class="bar progress progress-striped seekBase">
-                <div ng-style="{width: ( progress + '%' ) }" class="progress-bar seekLoad"></div>
-              </div>
-            </div>
-          </div>
+          <audio-player song="aepisode.song"></audio-player>
         </div>
         <div class="information">
           <div class="form-group">

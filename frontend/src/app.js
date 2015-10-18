@@ -13,15 +13,9 @@ app.config(['$routeProvider',
 			controller: 'LoginCtrl as login'
 		}).
 		when('/channels', {
-				templateUrl: 'views/listChannel.html',
-				controller: 'ListChannelCtrl as lchannel'
-			})
-			/*.
-					when('/channel/add', {
-						templateUrl: 'views/addChannel.html',
-						controller: 'AddChannelCtrl as achannel'
-					})*/
-			.
+			templateUrl: 'views/listChannel.html',
+			controller: 'ListChannelCtrl as lchannel'
+		}).
 		when('/channel/:channelId', {
 			templateUrl: 'views/channel.html',
 			controller: 'ChannelCtrl as channel'
@@ -46,5 +40,5 @@ app.filter('secondsToDateTime', [function() {
 	};
 }])
 
-var appCtrls = angular.module('appCtrls', ['appConfig', 'ngFileUpload', 'angularSoundManager']);
-var appDirectives = angular.module('appDirectives', ['appConfig']);
+var appCtrls = angular.module('appCtrls', ['appConfig', 'ngFileUpload']);
+var appDirectives = angular.module('appDirectives', ['appConfig', 'angularSoundManager']);
