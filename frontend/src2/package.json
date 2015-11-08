@@ -1,0 +1,30 @@
+{
+  "name": "podcast",
+  "version": "0.0.1",
+  "description": "podcast listener",
+  "main": "app.js",
+  "dependencies": {
+    "angular": "^1.4.7",
+    "angular-animate": "^1.4.7",
+    "angular-aria": "^1.4.7",
+    "angular-material": "^0.11.4",
+    "angular-route": "^1.4.7",
+    "bootstrap": "^3.3.5",
+    "bootstrap-material-design": "^0.3.0",
+    "jquery": "^2.1.4",
+    "material-design-icons": "^2.0.0",
+    "ng-file-upload": "^9.1.1"
+  },
+  "devDependencies": {
+    "browserify": "^3.44.2",
+    "gulp": "^3.9.0",
+    "gulp-uglify": "^1.4.2",
+    "vinyl-transform": "^1.0.0",
+    "watchify": "^3.5.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT"
+}

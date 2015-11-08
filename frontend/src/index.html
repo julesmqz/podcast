@@ -2,11 +2,12 @@
 <html lang="es" ng-app="podcastApp">
   <head>
     <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, user-scalable=no"/>
     <link rel="stylesheet" type="text/css" href="assets/css/podcast.css"/>
     <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" href="bower_components/bootstrap-material-design/dist/css/material.min.css"/>
   </head>
-  <body ng-controller="MainCtrl as main">
+  <body ng-controller="MainCtrl as main" ng-class="{'body-login' : !main.user}">
     <div id="navbar" ng-if="main.user">
       <div ng-click="main.menuToggled = !main.menuToggled" class="menu mdi-navigation-menu"></div>
     </div>
@@ -25,7 +26,7 @@
         </div>
       </div>
     </div>
-    <div id="only-login" ng-if="!main.user" class="container-fluid">
+    <div id="only-login" ng-if="!main.user">
       <div ng-view="ng-view" class="content"></div>
     </div>
   </body>

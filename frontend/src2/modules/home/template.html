@@ -1,0 +1,20 @@
+
+<style>
+  .card{
+  	width: 300px;
+  	min-height: 300px;
+  	cursor: pointer;
+  }
+  .card img{
+  	width: 100%;
+  }
+</style>
+<md-content class="home md-padding">
+  <h2>Canales</h2>
+  <div ng-if="home.channels" ng-repeat="channel in home.channels" ng-click="home.goToChannel(channel.id)" class="card md-whiteframe-3dp"><img ng-src="{{home.resourceUrl}}images/{{channel.image}}"/>
+    <card-content>
+      <h3>{{channel.title}}</h3>
+      <p>{{channel.description}}</p>
+    </card-content>
+  </div>
+</md-content>

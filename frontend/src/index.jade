@@ -1,11 +1,12 @@
 html(lang="es",ng-app="podcastApp")
 	head
 		meta(charset="UTF-8")
+		meta(name="viewport",content="width=device-width, user-scalable=no")
 		link(rel="stylesheet", type="text/css", href="assets/css/podcast.css")
 		link(rel="stylesheet", type="text/css", href="bower_components/bootstrap/dist/css/bootstrap.min.css")
 		//- link(rel="stylesheet", type="text/css", href="bower_components/bootstrap-table/dist/bootstrap-table.min.css")
 		link(rel="stylesheet", type="text/css", href="bower_components/bootstrap-material-design/dist/css/material.min.css")
-	body(ng-controller="MainCtrl as main")
+	body(ng-controller="MainCtrl as main",ng-class="{'body-login' : !main.user}")
 			#navbar(ng-if="main.user")
 				.menu.mdi-navigation-menu(ng-click="main.menuToggled = !main.menuToggled")
 			#wrapper(ng-if="main.user",ng-class="{toggled: main.menuToggled}")
@@ -22,7 +23,7 @@ html(lang="es",ng-app="podcastApp")
 				#page-content-wrapper
 					.container-fluid
 						.content(ng-view)
-			#only-login.container-fluid(ng-if="!main.user")
+			#only-login(ng-if="!main.user")
 				.content(ng-view)
 		script( typer="text/javascript",src="bower_components/jquery/dist/jquery.min.js" )
 		script( typer="text/javascript",src="bower_components/bootstrap/dist/js/bootstrap.min.js" )

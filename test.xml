@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:itunesu="http://www.itunesu.com/feed" version="2.0">
+<channel xmlns="">
+<title xmlns="">El Ángel de tu salud</title>
+<link xmlns="">http://radiolavozdelangeldetusalud.mx/podcastBack/</link>
+<language xmlns="">es/mx</language>
+<copyright xmlns="">© El Ángel</copyright>
+<itunes:subtitle />
+<itunes:author >El Ángel</itunes:author>
+<itunes:summary >productos herbolarios</itunes:summary>
+<description xmlns="">productos herbolarios</description>
+<itunes:owner >
+<itunes:name>El Ángel</itunes:name>
+<itunes:email>angel@angel.com</itunes:email>
+</itunes:owner>
+<itunes:image  href="http://example.com/image"/>
+<itunes:explicit >no</itunes:explicit>
+</channel>
+</rss>

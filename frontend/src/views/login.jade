@@ -1,20 +1,19 @@
 .login
-	.login-form.well.bs-component
-		form.form-horizontal
-			fieldset
-				legend Podcast Manager
-				.form-group
-					.col-lg-12
-						input#inputUser.form-control(type="text",placeholder="User",ng-model="login.user")
-				br
-				.form-group
-					.col-lg-12
-						input#inputPass.form-control(type="password",placeholder="Password",ng-model="login.pass")
-				br
-				.form-group
-					.col-lg-10.col-lg-offset-2
-						button.btn.btn-primary.pull-right(ng-click="login.send()") Login
-		.alert.alert-danger(ng-if="login.error")
-			.pull-left.mdi-alert-error 
-			div {{login.error}}
+	.login-body
+		h1.title Podcast Manager
+		.login-form
+			form.form-horizontal
+				fieldset
+					legend Iniciar Sesión
+					.form-group
+						.col-lg-12
+							input#inputUser.form-control(type="text",placeholder="User",ng-model="login.user")
+					br
+					.form-group
+						.col-lg-12
+							input#inputPass.form-control(type="password",placeholder="Password",ng-model="login.pass")
+			.alert.alert-danger(ng-if="login.error")
+				.pull-left.mdi-alert-error 
+				div {{login.error}}
+	button.login-button.btn.btn-primary.btn-lg.btn-block(ng-click="login.send()") Login
 

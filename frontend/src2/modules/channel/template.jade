@@ -1,0 +1,27 @@
+style.
+	.cover{
+		overflow: hidden;
+		height: 200px;
+	}
+	.info{
+		position: relative;
+		-webkit-box-shadow: 0px -4px 7px #e6e6e6;
+		-moz-box-shadow: 0px -4px 7px #e6e6e6;
+		box-shadow: 0px -4px 7px #e6e6e6;
+	}
+md-content.channel
+	.channel-content
+		.cover
+			img(style="width:100%",ng-src="{{channel.resourceUrl}}images/{{channel.info.image}}")
+		.info
+			h2(style="margin:0;") {{channel.info.title}}
+			p {{channel.info.description}}
+			h3 Episodes
+			md-list.md-whiteframe-4dp
+				md-list-item.md-2-line(ng-repeat="episode in channel.episodes")
+					//- img.md-avatar(ng-src="{{episode.image}}",alt="{{episode.title}}",music-player="play",add-song="episode")
+					md-button.md-icon-button(music-player="play",add-song="episode")
+						md-icon.material-icons(style="cursor:pointer;") music_note
+					.md-list-item-text(layout="column")
+						h3 {{episode.title}}
+						p {{episode.artist || 'Unknown'}}

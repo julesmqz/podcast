@@ -1,0 +1,16 @@
+style.
+	.card{
+		width: 300px;
+		min-height: 300px;
+		cursor: pointer;
+	}
+	.card img{
+		width: 100%;
+	}
+md-content.home.md-padding
+	h2 Canales
+	.card.md-whiteframe-3dp(ng-if="home.channels",ng-repeat="channel in home.channels",ng-click="home.goToChannel(channel.id)")
+		img(ng-src="{{home.resourceUrl}}images/{{channel.image}}")
+		card-content
+			h3 {{channel.title}}
+			p {{channel.description}}

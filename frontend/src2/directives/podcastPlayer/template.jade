@@ -1,0 +1,39 @@
+#soundmanager(ng-cloak,layout="row")
+	sound-manager
+	div(flex)
+		img(src="http://placehold.it/200x200",style="width:100%;height:100%;")
+	div(flex="90",layout="column")
+		md-progress-linear(flex="10",md-mode="determinate",value="{{progress}}",seek-track,ng-class="{active:isPlaying}")
+		div(flex="20") {{ currentPostion || '--' }} : {{ currentDuration || '--' }}
+		div(flex,layout="row")
+			div(flex="20")
+				span {{ currentPlaying.title || '--' }}
+				br
+				span {{ currentPlaying.artist || '--' }} 
+			div(flex,style="text-align: center;")
+				i.material-icons(style="font-size:45px;") keyboard_arrow_left
+				//- i.material-icons(style="font-size:50px;",music-player="play",add-song="song",ng-if="!currentPlaying") play_circle_filled
+				i.material-icons(style="font-size:50px;",play-music,ng-if="!isPlaying") play_circle_filled
+				i.material-icons(style="font-size:50px;",pause-music,ng-if="isPlaying") pause_circle_filled
+				i.material-icons(style="font-size:45px;") keyboard_arrow_right
+			div(flex="10",style="text-align: right;")
+				md-menu(md-offset="2 0")
+					md-button.md-icon-button(ng-click="$mdOpenMenu($event)")
+						md-icon.material-icons(style="font-size: 30px;") more_vert
+					md-menu-content(width="4")
+						md-menu-item
+							md-button
+								md-icon.material-icons face
+								| Add to Playlist
+						md-menu-item
+							md-button
+								md-icon.material-icons face
+								| Clear Playlist
+						md-menu-item
+							md-button
+								md-icon.material-icons face
+								| Go to Playlist
+						md-menu-item
+							md-button(stop-music)
+								md-icon.material-icons face
+								| Stop

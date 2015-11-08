@@ -24,13 +24,13 @@ appCtrls.controller('AddEpisodeCtrl', ['$scope', '$http', '$location', '$routePa
 					vm.new.fileType = res.data.data.file_type;
 					vm.new.title = res.data.data.client_name;
 					vm.new.pubDate = file.lastModifiedDate;
-					vm.new.audioFilePath = config.backUrl + 'audios/' + vm.new.fileName;
+					vm.new.audioFilePath = config.resourceUrl + 'audios/' + vm.new.fileName;
 
 					vm.song = {
 						id: 1,
 						title: vm.new.title,
 						artist: vm.new.author,
-						url: config.backUrl + 'audios/' + res.data.data.file_name
+						url: config.resourceUrl + 'audios/' + res.data.data.file_name
 					};
 
 					Upload.mediaDuration(file).then(function(durationInSeconds){

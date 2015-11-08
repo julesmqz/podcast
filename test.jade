@@ -1,0 +1,23 @@
+html(ng-app="myApp")
+	head
+		script(src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js")
+	body(ng-controller="MainCtrl as main")
+		p {{main.test}}
+		button(ng-click="main.privateApi()") Private Api
+		button(ng-click="main.publicApi()") Public Api
+		script.
+			var app = angular.module('myApp',[]);
+			app.controller('MainCtrl',['$http',function( $http ){
+				this.test = 'Prueba';
+				this.privateApi = function(){
+					$http.get('http://localhost/podcast/private_api/test').then(function( res ){
+						console.log( res );
+					});
+				}
+
+				this.publicApi = function(){
+					$http.get('http://localhost/podcast/public_api/test').then(function( res ){
+						console.log( res );
+					});
+				}
+			}]);

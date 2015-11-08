@@ -1,0 +1,73 @@
+
+<html lang="es">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, user-scalable=no"/>
+    <link rel="stylesheet" href="node_modules/angular-material/angular-material.min.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+    <style>
+      #complete-content{
+      	position: absolute;
+      	top: 0;
+      	bottom: 75px;
+      	width: 100%;
+      }
+      .inner-content{
+      	margin-bottom: 75px;
+      }
+      #soundmanager{
+      	position: fixed;
+      	height: 75px;
+      	bottom: 0;
+      	left: 0;
+      	right: 0;
+      	color: black;
+      	z-index: 99;
+      	box-shadow: 0 0 8px #888888;
+      	box-shadow: 0 0 8px rgba(0,0,0,.4);
+      	cursor: default;
+      	width:100%;
+      	background: #FFF;
+      }
+      [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+      	display: none !important;
+      }
+    </style>
+  </head>
+  <body ng-controller="MainCtrl as main">
+    <div id="complete-content" ng-cloak="ng-cloak">
+      <div class="inner-content">
+        <md-sidenav md-component-id="left" class="md-sidenav-left md-whiteframe-z2">
+          <md-toolbar class="md-theme-light">
+            <div layout="row" class="md-toolbar-tools">
+              <h1 flex="flex">Podcast</h1>
+              <md-button ng-click="main.closeMenu()" flex="flex" class="md-primary"> <i class="material-icons">close</i></md-button>
+            </div>
+          </md-toolbar>
+          <md-content ng-controller="MenuCtrl as menu" layout-padding="layout-padding">
+            <ul>
+              <li> <a href="#/" ng-click="main.closeMenu()">Home</a></li>
+            </ul>
+          </md-content>
+        </md-sidenav>
+        <nav class="md-content">
+          <md-toolbar class="md-theme-light">
+            <div layout="row" class="md-toolbar-tools">
+              <md-button ng-click="main.openMenu()" flex="10" class="md-primary"><i class="material-icons">menu</i></md-button>
+              <md-input-container md-no-float="md-no-float" flex="70">
+                <md-icon alt="search" class="material-icons">search</md-icon>
+                <input ng-model="main.globalSearch" placeholder="Search"/>
+              </md-input-container>
+              <div flex="20">
+                <p>more</p>
+              </div>
+            </div>
+          </md-toolbar>
+        </nav>
+        <div ng-view="ng-view" class="content"></div>
+      </div>
+    </div>
+    <podcast-player></podcast-player>
+    <script typer="text/javascript" src="app-built.js"></script>
+  </body>
+</html>

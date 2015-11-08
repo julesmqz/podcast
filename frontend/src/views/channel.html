@@ -13,7 +13,7 @@
         <div class="flex-row">
           <div class="flex50">
             <div ngf-select="ngf-select" ngf-resize="{width: 150, height: 150}" ngf-change="channel.checkImage()" ng-model="channel.info.image" name="channelImage" style="text-align:center;color:#CCC;cursor:pointer;" class="image-uploader">
-              <div style="font-size:200px;" ng-if="!channel.info.image &amp;&amp; !channel.cover" class="mdi-image-image"></div><img ngf-src="channel.info.image" ng-if="channel.info.image &amp;&amp; !channel.cover"/><img ng-src="{{channel.cover}}" ng-if="channel.cover"/>
+              <div style="font-size:200px;" ng-if="!channel.info.image &amp;&amp; !channel.cover" class="mdi-image-image"></div><img ngf-src="channel.info.image" ng-if="channel.info.image &amp;&amp; !channel.cover"/><img style="width:100%;" ng-src="{{channel.cover}}" ng-if="channel.cover"/>
               <p>Change Image</p>
             </div>
           </div>

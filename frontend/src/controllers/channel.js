@@ -14,7 +14,7 @@ appCtrls.controller('ChannelCtrl', ['$scope', '$http', '$location', '$routeParam
 				vm._info.image = null;
 			}
 
-			vm.cover = (typeof rs.image == 'string') ? config.backUrl + 'images/' + rs.image : null;
+			vm.cover = (typeof rs.image == 'string') ? config.resourceUrl + 'images/' + rs.image : null;
 			// console.log(vm.cover);
 		}
 
@@ -35,7 +35,7 @@ appCtrls.controller('ChannelCtrl', ['$scope', '$http', '$location', '$routeParam
 
 			vm.episodes.forEach(function(episode) {
 				episode.artist = episode.author;
-				episode.url = config.backUrl + 'audios/' + episode.fileName;
+				episode.url = config.resourceUrl + 'audios/' + episode.fileName;
 			});
 
 		}, function(res) {
@@ -82,7 +82,7 @@ appCtrls.controller('ChannelCtrl', ['$scope', '$http', '$location', '$routeParam
 		}
 
 		this.checkImage = function() {
-			vm.cover = (typeof vm.info.image == 'string') ? config.backUrl + 'images/' + vm.info.image : null;
+			vm.cover = (typeof vm.info.image == 'string') ? config.resourceUrl + 'images/' + vm.info.image : null;
 			// console.log(vm.cover);
 		}
 
@@ -104,7 +104,7 @@ appCtrls.controller('ListChannelCtrl', ['$scope', "$location", 'config', 'channe
 			vm.list = rs;
 			vm.list.forEach(function(item) {
 				if (item.image != 'null') {
-					item.imageUrl = config.backUrl + 'images/' + item.image;
+					item.imageUrl = config.resourceUrl + 'images/' + item.image;
 					console.log('item image', item.image, item.imageUrl);
 				}
 			})
